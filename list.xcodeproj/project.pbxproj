@@ -65,10 +65,10 @@
 				D6BFC3E32A44790F006D5A16 /* Main.storyboard */,
 				D6BFC3F12A453766006D5A16 /* TableViewController.swift */,
 				D6BFC3F32A4C425A006D5A16 /* TableViewCell.swift */,
+				D6BFC3F42A4C425A006D5A16 /* TableViewCell.xib */,
 				D6BFC3E62A447911006D5A16 /* Assets.xcassets */,
 				D6BFC3E82A447911006D5A16 /* LaunchScreen.storyboard */,
 				D6BFC3EB2A447911006D5A16 /* Info.plist */,
-				D6BFC3F42A4C425A006D5A16 /* TableViewCell.xib */,
 			);
 			path = list;
 			sourceTree = "<group>";

@@ -7,41 +7,44 @@
 
 import UIKit
 
-var textLabel: UILabel!
-
-class TableViewController: UITableViewController {
+class ViewController: UIViewController, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var numbers: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let randomInt = Int.random(in: 1...100)
         
+        tableView.dataSource = self
+        
+        generateRandomNumbers()
     }
     
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-        let randomInt = Int.random(in: 1...100)
-        
-        // 数字が50以上の場合にセルを赤色で表示
-        if randomInt >= 50 {
-            cell.textLabel?.textColor = UIColor.red
-        } else {
-            cell.textLabel?.textColor = UIColor.black
+    func generateRandomNumbers() {
+        for _ in 1...20 {
+            let randomNumber = Int.random(in: 1...100)
+            numbers.append(randomNumber)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numbers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NumberCell", for: indexPath)
         
-        cell.textLabel?.text = "Random Number: \(randomInt)"
+        let number = numbers[indexPath.row]
+        cell.textLabel?.text = "\(number)"
+        
+        if number >= 50 {
+            cell.textLabel?.textColor = .red
+        } else {
+            cell.textLabel?.textColor = .black
+        }
         
         return cell
     }
-    
 }
+
